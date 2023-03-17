@@ -3,6 +3,13 @@ import express, {Express} from 'express'
 import {Server} from 'node:http'
 import {
     GraphQLServer,
+    GraphQLServerOptions,
+    LogHelper,
+    JsonLogger,
+    LogLevel,
+    LogEntry,
+} from '@dreamit/graphql-server'
+import {
     FETCH_ERROR,
     GRAPHQL_ERROR,
     INVALID_SCHEMA_ERROR,
@@ -12,12 +19,7 @@ import {
     SYNTAX_ERROR,
     VALIDATION_ERROR,
     MetricsClient,
-    GraphQLServerOptions,
-    LogHelper,
-    JsonLogger,
-    LogLevel,
-    LogEntry,
-} from '@dreamit/graphql-server'
+} from '@sgohlke/graphql-server-base'
 import fetch from 'cross-fetch'
 import {Console} from 'node:console'
 
