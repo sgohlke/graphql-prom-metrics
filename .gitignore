@@ -4,4 +4,4 @@
 /test-report/
 /coverage/
 /build/
-*.tgz
+sgohlke-graphql-prom-metrics*.*.tgz

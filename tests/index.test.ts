@@ -2,9 +2,9 @@ import bodyParser from 'body-parser'
 import express, {Express} from 'express'
 import {Server} from 'node:http'
 import {
+    createLogEntry,
     GraphQLServer,
     GraphQLServerOptions,
-    LogHelper,
     JsonLogger,
     LogLevel,
     LogEntry,
@@ -39,7 +39,7 @@ class NoStacktraceJsonLogger extends JsonLogger {
         error?: Error,
         customErrorName?: string,
         context?: unknown): void {
-        const logEntry: LogEntry = LogHelper.createLogEntry(logMessage,
+        const logEntry: LogEntry = createLogEntry(logMessage,
             loglevel,
             this.loggerName,
             this.serviceName,
