@@ -6,8 +6,8 @@ import {
     GraphQLServer,
     GraphQLServerOptions,
     JsonLogger,
-    LogLevel,
     LogEntry,
+    LogEntryInput,
 } from '@dreamit/graphql-server'
 import {
     FETCH_ERROR,
@@ -34,18 +34,24 @@ import { PromMetricsClient } from '~/src'
 
 class NoStacktraceJsonLogger extends JsonLogger {
     loggerConsole: Console = new Console(process.stdout, process.stderr, false)
-    logMessage(logMessage: string,
-        loglevel: LogLevel,
-        error?: Error,
-        customErrorName?: string,
-        context?: unknown): void {
-        const logEntry: LogEntry = createLogEntry(logMessage,
+    logMessage(logEntryInput: LogEntryInput): void {
+        const {
+            logMessage,
             loglevel,
-            this.loggerName,
-            this.serviceName,
             error,
             customErrorName,
-            context)
+            context
+        } = logEntryInput
+
+        const logEntry: LogEntry = createLogEntry({
+            context,
+            customErrorName,
+            error,
+            logMessage,
+            loggerName: this.loggerName,
+            loglevel,
+            serviceName: this.serviceName,
+        })
         logEntry.stacktrace = undefined
         this.loggerConsole.log(JSON.stringify(logEntry))
     }
@@ -440,7 +446,7 @@ function setupGraphQLServer(): Express {
     customGraphQLServer = new GraphQLServer(getInitialGraphQLServerOptions(new PromMetricsClient()))
     graphQLServerExpress.use(bodyParser.json())
     graphQLServerExpress.all('/graphql', (request, response) => {
-        return customGraphQLServer.handleRequestAndSendResponse(request, response)
+        return customGraphQLServer.handleRequest(request, response)
     })
     graphQLServerExpress.get('/metrics', async(_request, response) => {
         return response.contentType(customGraphQLServer.getMetricsContentType())
