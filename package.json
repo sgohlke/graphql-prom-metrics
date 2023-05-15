@@ -1,6 +1,6 @@
 {
   "name": "@sgohlke/graphql-prom-metrics",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "MetricsClient for @dreamit/graphql-server using prom-client library",
   "main": "build/src/index.js",
   "types": "build/src/index.d.ts",
@@ -37,7 +37,7 @@
     "jest-html-reporters": "3.1.4"
   },
   "peerDependencies": {
-    "@sgohlke/graphql-server-base": "^1.0.0 || ^2.0.0",
+    "@dreamit/graphql-server-base": "^1.0.0 || ^2.0.0",
     "prom-client": "^14.0.1"
   }
 }

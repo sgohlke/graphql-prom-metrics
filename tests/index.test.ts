@@ -19,7 +19,7 @@ import {
     SYNTAX_ERROR,
     VALIDATION_ERROR,
     MetricsClient,
-} from '@sgohlke/graphql-server-base'
+} from '@dreamit/graphql-server-base'
 import fetch from 'cross-fetch'
 import {Console} from 'node:console'
 
