@@ -29,7 +29,7 @@
   },
   "homepage": "https://github.com/sgohlke/graphql-prom-metrics#readme",
   "devDependencies": {
-    "@dreamit/graphql-server": "4.0.0",
+    "@dreamit/graphql-server": "4.1.0",
     "@sgohlke/ts-base-dependencies": "1.0.9",
     "@types/express": "4.17.17",
     "cross-fetch": "3.1.6",
