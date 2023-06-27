@@ -1,6 +1,6 @@
 {
   "name": "@sgohlke/graphql-prom-metrics",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "MetricsClient for @dreamit/graphql-server using prom-client library",
   "main": "build/src/index.js",
   "types": "build/src/index.d.ts",
